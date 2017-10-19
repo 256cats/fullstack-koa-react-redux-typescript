@@ -56,4 +56,7 @@ typings/
 
 # dotenv environment variables file
 .env
-
+.idea/
+.awcache/
+src/**/*.jsx
+__tests__/**/*.jsx
