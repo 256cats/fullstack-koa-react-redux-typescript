@@ -11,10 +11,10 @@
     "lib": ["es5", "es6", "dom", "scripthost", "es2015"],
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "moduleResolution": "node",
-    "rootDir": "."
+    "moduleResolution": "node"
   },
   "include": [
+    "types/*",
     "src/**/*"
   ],
   "exclude": [
@@ -23,5 +23,9 @@
     "node_modules",
     "**/*.spec.ts",
     "**/*.test.ts*"
+  ],
+  "files":[
+    "types/index.d"
   ]
+  
 }

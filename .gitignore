@@ -60,3 +60,4 @@ typings/
 .awcache/
 src/**/*.jsx
 __tests__/**/*.jsx
+docker/elasticsearch/nodes/

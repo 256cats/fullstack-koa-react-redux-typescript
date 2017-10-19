@@ -1,0 +1,8 @@
+version: '2'
+services:
+  elasticsearch:
+    build: ./docker/elasticsearch
+    volumes:
+      - ./docker/elasticsearch:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"

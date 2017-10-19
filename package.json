@@ -1,7 +1,7 @@
 {
-  "name": "koa-typescript-starter",
+  "name": "fullstack-koa-react-redux-typescript",
   "version": "1.0.0",
-  "main": "dist/index.js",
+  "main": "build/server/index.js",
   "license": "CC0-1.0",
   "scripts": {
     "build-client-prod": "webpack -p --config=config/webpack/prod.js",
