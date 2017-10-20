@@ -1,9 +1,9 @@
 import * as Koa from 'koa'
-import { config } from './config'
+import config from './common/config'
 import {
   HTTP_STATUS_BAD_REQUEST,
   HTTP_STATUS_500
-} from './constants'
+} from './common/constants'
 
 interface ILogData {
   method: string;

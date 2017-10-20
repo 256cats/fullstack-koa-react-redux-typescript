@@ -1,6 +1,6 @@
 
 import * as Router from 'koa-router'
-import { HTTP_STATUS_CREATED } from './constants'
+import { HTTP_STATUS_CREATED } from './common/constants'
 
 const router = new Router()
 

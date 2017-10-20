@@ -2,14 +2,19 @@ import * as Koa from 'koa'
 import * as koaStatic from 'koa-static'
 import * as koaWebpack from 'koa-webpack'
 import * as path from 'path'
-import { config } from './config'
+import config from './common/config'
 import { logger } from './logging'
-import { routes } from './routes'
-import { NODE_ENV_DEV } from './constants'
+import matches from './app/matches/router'
+import { NODE_ENV_DEV } from './common/constants'
+
+const publicFolder = NODE_ENV_DEV
+  ? config.dev.public
+  : config.build.public
+
 const app = new Koa()
 
 app.use(logger)
-app.use(routes)
+app.use(matches)
 
 if (NODE_ENV_DEV) { // enable webpack hot reload
   // tslint:disable-next-line
@@ -20,10 +25,7 @@ if (NODE_ENV_DEV) { // enable webpack hot reload
   }))
 }
 
-app.use(koaStatic(NODE_ENV_DEV
-  ? config.dev.public
-  : config.build.public
-))
+app.use(koaStatic(publicFolder))
 
 app.listen(config.port)
 

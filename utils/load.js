@@ -22,7 +22,7 @@ function initIndex() {
 function initMapping() {
   return client.indices.putMapping({
     index: indexName,
-    type: 'match',
+    type: 'matches',
     body: {
       _all : { enabled : false },
       properties: {
@@ -50,10 +50,10 @@ function initMapping() {
 function bulkAdd(documents) {
   const body = [];
   documents.forEach(d => {
-    d.city.location = [ d.city.lat, d.city.lon ];
+    d.city.location = { lat: d.city.lat, lon: d.city.lon };
     delete d.city.lat;
     delete d.city.lon;
-    body.push({ index: { _index: indexName, _type: 'match' } });
+    body.push({ index: { _index: indexName, _type: 'matches' } });
     body.push(d);
     
   });
