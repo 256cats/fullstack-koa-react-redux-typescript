@@ -1,26 +1,17 @@
 import { connect } from '../../lib/elastic'
 import { Model } from './model'
-import { IMatch } from '../../../shared'
+import { IMatch, IRange } from '../../../shared'
 import config from '../../common/config'
 import { RESULTS_PER_PAGE } from '../../common/constants'
 
 const connection = connect(config.elastic.index.matches)
 
 export interface IFind {
-  age: { 
-    gte?: number; 
-    lte?: number;
-  }
-  height: { 
-    gte?: number;
-    lte?: number;
-  }
-  maxDistance?: number;
+  age: IRange;
+  height: IRange;
+  maxDistance?: IRange;
   hasPhoto: boolean;
-  compatibilityScore: { 
-    gte?: number; 
-    lte?: number;
-  }
+  compatibilityScore: IRange;
   inContact: boolean;
   isFavourite: boolean;
 }
