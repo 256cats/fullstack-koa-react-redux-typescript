@@ -25,7 +25,7 @@
     "**/*.test.ts*"
   ],
   "files":[
-    "types/index.d"
+    "types/index.d.ts"
   ]
   
 }
