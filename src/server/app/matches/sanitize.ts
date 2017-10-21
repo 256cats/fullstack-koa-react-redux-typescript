@@ -1,6 +1,6 @@
 import { get } from 'lodash'
 import { sanitizeRange } from '../../lib/sanitize'
-import { IFind } from './dao'
+import { IFilters, defaultFilters } from '../../../shared'
 import {
   MIN_AGE,
   MAX_AGE,
@@ -14,28 +14,10 @@ import {
   IN_CONTACT_DEFAULT,
   IS_FAVOURITE_DEFAULT,
   MAX_DISTANCE_DEFAULT
-} from './constants'
+} from '../../../shared/constants'
 
-const defaultFindParameters: IFind = {
-  age: { 
-    gte: MIN_AGE
-  },
-  height: {
-    gte: MIN_HEIGHT,
-  },
-  maxDistance: {
-    lte: MAX_DISTANCE_DEFAULT
-  },
-  hasPhoto: false,
-  inContact: false,
-  isFavourite: false,
-  compatibilityScore: {
-    gte: MIN_COMPATIBILITY_SCORE
-  }
-}
-
-export default function sanitizeRequestBody(body: any): IFind {
-  const result: IFind = { ...defaultFindParameters }
+export default function sanitizeRequestBody(body: any): IFilters {
+  const result: IFilters = { ...defaultFilters }
 
   result.age = sanitizeRange({
     gte: get(body, 'age.gte', undefined),

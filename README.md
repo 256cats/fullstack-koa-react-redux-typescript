@@ -4,7 +4,8 @@ Requirements:
  * Node v8
 
 Features:
- * Koa 2, Typescript, React, Redux, SASS, Webpack + HMR, Jest
+ * Koa 2, TypeScript, React, Redux, SASS, Webpack + HMR, Jest, Reselect
+ * Fullstack TypeScript project with code/Type/Interface sharing between server and client
  * Webpack runs inside of Koa server, no need for Webpack dev server
  * Webpack Hot Module Replacement works out of the box
  * Watch mode - server auto-restarts on code changes

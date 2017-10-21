@@ -16,8 +16,3 @@ export interface IMatch {
   favourite: boolean;
   religion: string;
 }
-
-export interface IRange {
-  gte?: number; 
-  lte?: number;
-}

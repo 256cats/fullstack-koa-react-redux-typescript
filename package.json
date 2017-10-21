@@ -72,7 +72,10 @@
     "webpack-merge": "^4.1.0"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/redux-thunk": "^2.1.0",
     "autoprefixer": "^7.1.5",
+    "axios": "^0.16.2",
     "bodybuilder": "^2.2.6",
     "class-sanitizer": "^0.0.5",
     "classnames": "^2.2.5",
@@ -84,7 +87,12 @@
     "koa-router": "7.2.1",
     "koa-static": "^4.0.1",
     "lodash": "^4.17.4",
-    "postcss-smart-import": "^0.7.5"
+    "postcss-smart-import": "^0.7.5",
+    "react-router-redux": "next",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-react-router": "^1.0.0-beta3",
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   },
   "jest": {
     "moduleFileExtensions": [

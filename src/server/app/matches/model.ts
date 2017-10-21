@@ -1,5 +1,5 @@
-import { elastic } from '../../lib/elastic'
-const Schema = elastic.Schema({
+// just fyi
+const Schema = {
   display_name: { type: 'string' },
   age: { type: 'integer' },
   job_title: { type: 'string' },
@@ -13,6 +13,4 @@ const Schema = elastic.Schema({
   contacts_exchanged: { type: 'integer' },
   favourite: { type: 'boolean' },
   religion: { type: 'string' }
-})
-
-export const Model = elastic.model('Match', Schema)
+}

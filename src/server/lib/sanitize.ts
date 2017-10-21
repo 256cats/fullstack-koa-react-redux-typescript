@@ -17,12 +17,6 @@ export function sanitizeRange({
   openLeft,
   openRight
 }: ISanitizeRange): IRange {
-  console.log(gte,
-    lte,
-    min,
-    max,
-    openLeft,
-    openRight)
   gte = parseInt(gte, 10) || undefined
   lte = parseInt(lte, 10) || undefined
 
@@ -37,8 +31,7 @@ export function sanitizeRange({
       ? undefined
       : max
   }
-  console.log(gte,lte)
-
+  
   return {
     gte,
     lte

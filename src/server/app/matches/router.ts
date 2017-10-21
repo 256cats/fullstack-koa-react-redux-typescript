@@ -1,14 +1,26 @@
-
+import { Request } from 'koa'
 import * as Router from 'koa-router'
 import { get } from 'lodash'
-import { getApiRoutePrefix } from '../../common/helpers'
+// import { getApiRoutePrefix } from '../../common/helpers'
 import { findMatches } from './dao'
 import sanitize from './sanitize'
-const router = new Router({
-  prefix: getApiRoutePrefix()
-})
+import { IFilters } from '../../../shared'
+import { Routes } from '../../../shared'
+const router = new Router(
+// {
+//   prefix: getApiRoutePrefix()
+// }
+)
 
-router.get('/matches', async ctx => {
+interface IMatchesRequestContext extends Router.IRouterContext {
+  request: IMatchesRequest;
+}
+
+interface IMatchesRequest extends Request {
+  body: IFilters;
+}
+
+router.get(Routes.POST_MATCHES, async ctx => {
   const payload = {
     age: { gte: 18, lte: 50 },
     height: { gte: 140, lte: 200 },
@@ -21,8 +33,8 @@ router.get('/matches', async ctx => {
   ctx.body = await findMatches(sanitize(payload))
 })
 
-router.post('/matches', async ctx => {
-  ctx.body = await findMatches(sanitize({}))
+router.post(Routes.POST_MATCHES, async (ctx: IMatchesRequestContext) => {
+  ctx.body = await findMatches(sanitize(ctx.request.body))
 })
 
 export default router.routes()
