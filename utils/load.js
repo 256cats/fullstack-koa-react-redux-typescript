@@ -31,7 +31,7 @@ function initMapping() {
         job_title: { type: 'string' },
         height_in_cm: { type: 'integer' },
         city: {
-          type: 'nested',
+          // type: 'nested',
           properties: {
             name: { type: 'string' },
             location: { type: 'geo_point'}
@@ -55,7 +55,6 @@ function bulkAdd(documents) {
     delete d.city.lon;
     body.push({ index: { _index: indexName, _type: 'matches' } });
     body.push(d);
-    
   });
   
   return client.bulk({ body: body });

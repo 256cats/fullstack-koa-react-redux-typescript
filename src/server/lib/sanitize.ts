@@ -1,4 +1,5 @@
 import { isNumber } from 'lodash'
+import { IRange } from '../../shared'
 export interface ISanitizeRange {
   gte: any; 
   lte: any;
@@ -16,8 +17,14 @@ export function sanitizeRange({
   openLeft,
   openRight
 }: ISanitizeRange): IRange {
-  gte = parseInt(gte, 10)
-  lte = parseInt(lte, 10)
+  console.log(gte,
+    lte,
+    min,
+    max,
+    openLeft,
+    openRight)
+  gte = parseInt(gte, 10) || undefined
+  lte = parseInt(lte, 10) || undefined
 
   if(!isNumber(gte) || gte < min) {
     gte = openLeft 
@@ -30,6 +37,7 @@ export function sanitizeRange({
       ? undefined
       : max
   }
+  console.log(gte,lte)
 
   return {
     gte,
