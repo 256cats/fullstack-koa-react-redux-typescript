@@ -89,6 +89,7 @@
     "lodash": "^4.17.4",
     "postcss-smart-import": "^0.7.5",
     "react-router-redux": "next",
+    "react-select": "^1.0.0-rc.10",
     "redux-devtools-extension": "^2.13.2",
     "redux-react-router": "^1.0.0-beta3",
     "redux-thunk": "^2.2.0",

@@ -11,7 +11,7 @@ import SearchResults from '../../components/SearchResults'
 import { filtersSelector, matchesSelector } from '../../selectors'
 
 export namespace App {
-  export interface Props extends RouteComponentProps<void> {
+  export interface IProps extends RouteComponentProps<void> {
     filters: IFilters;
     matches: Array<IMatch>;
     actions: typeof Actions;
@@ -23,21 +23,19 @@ export namespace App {
 // actions and reducers
 
 @connect(mapStateToProps, mapDispatchToProps)
-export class App extends React.Component<App.Props, any> {
-  componentDidMount() {
+export default class App extends React.Component<App.IProps, any> {
+  public componentDidMount() {
     const { actions, filters } = this.props
-    // actions.filterChange(filters)
-    // debugger
     actions.requestSearch(filters) // initial search request on app load
   }
 
-  onFilterChange(filters: IFilters) {
+  private onFilterChange(filters: IFilters) {
     const { actions } = this.props
     actions.filterChange(filters)
     actions.requestSearch(filters)
   }
 
-  render() {
+  public render() {
     const { filters, actions, matches } = this.props
     const { onFilterChange } = this
     return <AppLayout>

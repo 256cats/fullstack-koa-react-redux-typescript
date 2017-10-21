@@ -1,16 +1,11 @@
 import { Request } from 'koa'
 import * as Router from 'koa-router'
 import { get } from 'lodash'
-// import { getApiRoutePrefix } from '../../common/helpers'
 import { findMatches } from './dao'
 import sanitize from './sanitize'
 import { IFilters } from '../../../shared'
 import { Routes } from '../../../shared'
-const router = new Router(
-// {
-//   prefix: getApiRoutePrefix()
-// }
-)
+const router = new Router()
 
 interface IMatchesRequestContext extends Router.IRouterContext {
   request: IMatchesRequest;
