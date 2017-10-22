@@ -1,8 +1,13 @@
 import * as React from 'react'
 // import '!style-loader!css-loader!sass-loader!./scss/index.scss'
 import '!style-loader!css-loader!react-select/dist/react-select.css'
+import '!style-loader!css-loader!rheostat/css/slider.css'
+import '!style-loader!css-loader!rheostat/css/slider-horizontal.css'
+// import '!style-loader!css-loader!rheostat/css/slider-vertical.css'
 import ReactSelect from 'react-select'
+import Rheostat from 'rheostat'
 import { IRange } from '../../../shared'
+import { range } from 'lodash'
 
 export interface ISelectOption {
   value: number;
@@ -10,16 +15,9 @@ export interface ISelectOption {
 }
 
 export interface IStateProps {
-  options: Array<ISelectOption>;
   selected: IRange;
-  placeholder: {
-    gte?: string;
-    lte?: string;
-  }
-  hidden: {
-    lte?: boolean;
-    gte?: boolean;
-  }
+  min: number;
+  max: number;
 }
 
 export interface IDispatchProps {
@@ -29,41 +27,25 @@ export interface IDispatchProps {
 export type ComponentProps = IStateProps & IDispatchProps
 
 export default class Range extends React.Component<ComponentProps, any> {
-  private onChangeGte = (option: ISelectOption) => {
+  private onChange = (values: {values: Array<number>}) => {
     const { selected, onChange } = this.props
-    onChange({ ...selected, gte: option.value } as IRange)
-  }
-
-  private onChangeLte = (option: ISelectOption) => {
-    const { selected, onChange } = this.props
-    // debugger
-    onChange({ ...selected, lte: option.value } as IRange)
+    onChange({
+      gte: values.values[0],
+      lte: values.values[1]
+    } as IRange)
   }
 
   public render() {
-    const { options, selected, placeholder, hidden } = this.props
-    const { onChangeGte, onChangeLte } = this
+    const { selected, min, max } = this.props
+    const { onChange } = this
+    
     return <div>
-      { !hidden.gte && <ReactSelect
-        onChange={ onChangeGte }
-        options={ options }
-        value={ selected.gte }
-        placeholder={ placeholder.gte 
-          ? placeholder.gte
-          : undefined 
-        }
-        clearable={ !!placeholder.gte }
-      /> }
-      { !hidden.lte && <ReactSelect
-        onChange={ onChangeLte }
-        options={ options }
-        value={ selected.lte }
-        placeholder={ placeholder.lte 
-          ? placeholder.lte
-          : undefined 
-        }
-        clearable={ !!placeholder.lte }
-      /> }
+      <Rheostat
+        min={ min }
+        max={ max }
+        onValuesUpdated={ onChange }
+        values={ [selected.gte, selected.lte] }
+      />
     </div>
   }
 }

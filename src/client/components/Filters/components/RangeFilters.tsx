@@ -23,22 +23,19 @@ const RangeFilters = (props: ComponentProps) => {
       label: 'Compatibility score',
       min: MIN_COMPATIBILITY_SCORE,
       max: MAX_COMPATIBILITY_SCORE,
-      placeholder: {},
-      hidden: {}
+      placeholder: {}
     },
     age: {
       label: 'Age',
       min: MIN_AGE,
       max: MAX_AGE,
-      placeholder: { lte: `Greater than ${MAX_AGE}` },
-      hidden: {}
+      placeholder: { lte: true }
     },
     height: {
       label: 'Height',
       min: MIN_HEIGHT,
       max: MAX_HEIGHT,
-      placeholder: { lte: `Greater than ${MAX_HEIGHT}` },
-      hidden: {}
+      placeholder: { lte: true }
     }
   }
 

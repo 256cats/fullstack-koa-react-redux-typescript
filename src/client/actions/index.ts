@@ -6,8 +6,9 @@ import {
 } from '../../shared'
 import * as Actions from '../constants/actions'
 import { post } from '../lib/request'
+import { debounce, curry } from 'lodash'
 
-export const requestSearch = (data: IFilters) => async dispatch => {
+const doRequest = debounce(async (dispatch, data) => {
   const url = Routes.POST_MATCHES
   try {
     const response = await post(url, data)
@@ -15,7 +16,8 @@ export const requestSearch = (data: IFilters) => async dispatch => {
   } catch (e) {
     console.log('http error', e) // todo - error handling
   }
-}
+}, 500)
+export const requestSearch = (data: IFilters) => dispatch => doRequest(dispatch, data)
 
 export const receiveSearch = createAction<Array<IMatch>>(Actions.SEARCH_REQUEST_RECEIVE)
 export const filterChange = createAction<IFilters>(Actions.FILTER_CHANGE)

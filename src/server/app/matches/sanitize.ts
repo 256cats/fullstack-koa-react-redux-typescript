@@ -52,7 +52,7 @@ export default function sanitizeRequestBody(body: any): IFilters {
 
   result.maxDistance = sanitizeRange({
     gte: undefined,
-    lte: get(body, 'maxDistance', undefined),
+    lte: get(body, 'maxDistance.lte', undefined),
     min: MIN_DISTANCE,
     max: MAX_DISTANCE,
     openLeft: true,

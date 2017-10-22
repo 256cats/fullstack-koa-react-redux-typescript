@@ -1,8 +1,14 @@
 import * as React from 'react'
 import { IFilters, IMatch, IRange } from '../../../../shared'
 import Range from '../../Range'
-import { range } from 'lodash'
+import { range, first, last } from 'lodash'
 import { ComponentProps } from '../interfaces.d'
+import { debounce } from 'lodash'
+
+enum ESliderOpen {
+  left = 'left',
+  right = 'right'
+}
 
 const RangeWrapper = (props: ComponentProps & { 
   name: string, 
@@ -11,13 +17,10 @@ const RangeWrapper = (props: ComponentProps & {
   max: number;
   selected: IRange;
   placeholder: {
-    gte?: string;
-    lte?: string;
-  }
-  hidden: {
-    lte?: boolean;
     gte?: boolean;
+    lte?: boolean;
   }
+  unit?: string;
 } ) => {
   const {
     filters, 
@@ -28,23 +31,65 @@ const RangeWrapper = (props: ComponentProps & {
     max,
     selected,
     placeholder,
-    hidden
+    unit
   } = props
 
-  const onChange = (value: IRange) => 
-    onFilterChange({ ...filters, [name]: value })
+  const options = range(min, max + 1)
   
-  const options = range(min, max + 1).map(i => ({ value: i, label: `${i}` }))
+  if(placeholder.gte) {
+    options.unshift(ESliderOpen.left)
+  }
+
+  if(placeholder.lte) {
+    options.push(ESliderOpen.right)
+  }
+
+  const selectedIndex = {
+    gte: options.findIndex(i => i === (typeof selected.gte === 'undefined'
+      ? ESliderOpen.left
+      : selected.gte)),
+    lte: options.findIndex(i => i === (typeof selected.lte === 'undefined'
+      ? ESliderOpen.right
+      : selected.lte))
+  }
+
+  const placeholderText = {
+    gte: options[selectedIndex.gte] === ESliderOpen.left
+      ? `Less than ${min}${unit || ''}`
+      : options[selectedIndex.gte],
+    lte: options[selectedIndex.lte] === ESliderOpen.right
+      ? `Greater than ${max}${unit || ''}`
+      : options[selectedIndex.lte]
+  }
+
+  const indexToPropsValue = (value: IRange) => ({
+    gte: options[value.gte] === ESliderOpen.left
+      ? undefined
+      : options[value.gte],
+    lte: options[value.lte] === ESliderOpen.right
+      ? undefined
+      : options[value.lte]
+  })
+
+  const onChange = (value: IRange) => 
+    onFilterChange({ ...filters, [name]: indexToPropsValue(value) })
 
   return <div>
     <span>{ label }</span>
     <Range
-      options={ options }
-      selected={ selected }
-      placeholder={ placeholder }
+      selected={ selectedIndex }
+      min={ 0 }
+      max={ options.length - 1 }
       onChange={ onChange }
-      hidden={ hidden }
     />
+    <div>
+      <div>
+        { placeholderText.gte }
+      </div>
+      <div>
+        { placeholderText.lte }
+      </div>
+    </div>
   </div>
 }
 
