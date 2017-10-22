@@ -16,7 +16,7 @@ import {
   MAX_DISTANCE_DEFAULT
 } from '../../../shared/constants'
 
-export default function sanitizeRequestBody(body: any): IFilters {
+export function sanitizeRequestBody(body: any): IFilters {
   const result: IFilters = { ...defaultFilters }
 
   result.age = sanitizeRange({
@@ -61,3 +61,5 @@ export default function sanitizeRequestBody(body: any): IFilters {
 
   return result
 }
+
+export default sanitizeRequestBody

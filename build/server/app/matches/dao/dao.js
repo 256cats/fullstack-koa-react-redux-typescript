@@ -34,23 +34,31 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
-var Router = require("koa-router");
-var constants_1 = require("./common/constants");
-var router = new Router();
-router.get('/test2', function (ctx) { return __awaiter(_this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        ctx.body = 'Hello World!';
-        return [2 /*return*/];
+var elastic_1 = require("../../../lib/elastic");
+var config_1 = require("../../../common/config");
+var queryBuilder_1 = require("./queryBuilder");
+var JSON_TAB = 2;
+function findMatches(params) {
+    return __awaiter(this, void 0, void 0, function () {
+        var response;
+        return __generator(this, function (_a) {
+            switch (_a.label) {
+                case 0:
+                    // todo - error handling, pagination
+                    console.log('request', JSON.stringify(params, null, JSON_TAB));
+                    console.log('body', JSON.stringify(queryBuilder_1.queryBodyBuilder(params), null, JSON_TAB));
+                    return [4 /*yield*/, elastic_1.client.search({
+                            index: config_1.default.elastic.index.matches,
+                            type: config_1.default.elastic.index.matches,
+                            body: queryBuilder_1.queryBodyBuilder(params)
+                        })];
+                case 1:
+                    response = _a.sent();
+                    return [2 /*return*/, elastic_1.getResults(response)];
+            }
+        });
     });
-}); });
-router.get('/test', function (ctx) { return __awaiter(_this, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        ctx.status = constants_1.HTTP_STATUS_CREATED;
-        ctx.body = 'test';
-        return [2 /*return*/];
-    });
-}); });
-exports.routes = router.routes();
-//# sourceMappingURL=routes.js.map
+}
+exports.findMatches = findMatches;
+//# sourceMappingURL=dao.js.map

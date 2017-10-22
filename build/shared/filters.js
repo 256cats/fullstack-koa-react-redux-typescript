@@ -6,7 +6,7 @@ exports.defaultFilters = {
         gte: constants_1.MIN_AGE
     },
     height: {
-        gte: constants_1.MIN_HEIGHT,
+        gte: constants_1.MIN_HEIGHT
     },
     maxDistance: {
         lte: constants_1.MAX_DISTANCE_DEFAULT

@@ -1,0 +1,118 @@
+[{
+  "input": {
+    "age": {
+      "gte": 18
+    },
+    "height": {
+      "gte": 135
+    },
+    "maxDistance": {
+      "lte": 300
+    },
+    "hasPhoto": false,
+    "inContact": false,
+    "isFavourite": false,
+    "compatibilityScore": {
+      "gte": 1,
+      "lte": 99
+    }
+  },
+  "output": {
+    "age": {
+      "gte": 18
+    },
+    "height": {
+      "gte": 135
+    },
+    "maxDistance": {
+      "lte": 300
+    },
+    "hasPhoto": false,
+    "inContact": false,
+    "isFavourite": false,
+    "compatibilityScore": {
+      "gte": 1,
+      "lte": 99
+    }
+  }
+}, {
+  "input": {
+    "age": {
+      "gte": 25,
+      "lte": 69
+    },
+    "height": {
+      "gte": 155,
+      "lte": 191
+    },
+    "maxDistance": {
+      "lte": 117
+    },
+    "hasPhoto": true,
+    "inContact": true,
+    "isFavourite": true,
+    "compatibilityScore": {
+      "gte": 10,
+      "lte": 48
+    }
+  },
+  "output":  {
+    "age": {
+      "gte": 25,
+      "lte": 69
+    },
+    "height": {
+      "gte": 155,
+      "lte": 191
+    },
+    "maxDistance": {
+      "lte": 117
+    },
+    "hasPhoto": true,
+    "inContact": true,
+    "isFavourite": true,
+    "compatibilityScore": {
+      "gte": 10,
+      "lte": 48
+    }
+  }
+}, {
+  "input": {
+    "age": {
+      "gte": 4,
+      "lte": 500
+    },
+    "height": {
+      "gte": -1,
+      "lte": "asdf"
+    },
+    "maxDistance": {
+      "lte": "vvvv"
+    },
+    "hasPhoto": 0,
+    "inContact": 1111,
+    "isFavourite": {
+      "test": 1
+    },
+    "compatibilityScore": {
+      "gte": 0,
+      "lte": 44
+    }
+  },
+  "output":  {
+    "age": {
+      "gte": 18
+    },
+    "height": {
+      "gte": 135
+    },
+    "maxDistance": {},
+    "hasPhoto": false,
+    "inContact": true,
+    "isFavourite": true,
+    "compatibilityScore": {
+      "gte": 1,
+      "lte": 44
+    }
+  }
+}]

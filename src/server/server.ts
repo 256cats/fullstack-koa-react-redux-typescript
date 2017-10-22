@@ -4,7 +4,7 @@ import * as koaWebpack from 'koa-webpack'
 import * as koaBodyParser from 'koa-bodyparser'
 import * as path from 'path'
 import config from './common/config'
-import { logger } from './logging'
+import * as logger from 'koa-logger'
 import matches from './app/matches/router'
 import { NODE_ENV_DEV } from './common/constants'
 
@@ -14,7 +14,7 @@ const publicFolder = NODE_ENV_DEV
 
 const app = new Koa()
 
-app.use(logger)
+app.use(logger())
 app.use(koaBodyParser())
 app.use(matches)
 

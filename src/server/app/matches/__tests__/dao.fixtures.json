@@ -1,0 +1,335 @@
+[{
+  "input": {
+    "age": {
+      "gte": 18
+    },
+    "height": {
+      "gte": 135
+    },
+    "maxDistance": {
+      "lte": 300
+    },
+    "hasPhoto": false,
+    "inContact": false,
+    "isFavourite": false,
+    "compatibilityScore": {
+      "gte": 0.01,
+      "lte": 0.99
+    }
+  },
+  "output": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "age": {
+                "gte": 18
+              }
+            }
+          },
+          {
+            "range": {
+              "height_in_cm": {
+                "gte": 135
+              }
+            }
+          },
+          {
+            "range": {
+              "compatibility_score": {
+                "gte": 0.01,
+                "lte": 0.99
+              }
+            }
+          },
+          {
+            "term": {
+              "favourite": false
+            }
+          },
+          {
+            "range": {
+              "contacts_exchanged": {
+                "lte": 1
+              }
+            }
+          },
+          {
+            "geo_distance": {
+              "distance": "300km",
+              "city.location": {
+                "lat": 51.509865,
+                "lon": -0.118092
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "exists": {
+              "field": "main_photo"
+            }
+          }
+        ],
+        "should": []
+      }
+    },
+    "from": 0,
+    "size": 25,
+    "sort": [],
+    "aggs": {}
+  }
+},{
+  "input": {
+    "age": {
+      "gte": 18
+    },
+    "height": {
+      "gte": 135
+    },
+    "maxDistance": {
+      "lte": 300
+    },
+    "hasPhoto": true,
+    "inContact": true,
+    "isFavourite": false,
+    "compatibilityScore": {
+      "gte": 0.09,
+      "lte": 0.4
+    }
+  },
+  "output": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "age": {
+                "gte": 18
+              }
+            }
+          },
+          {
+            "range": {
+              "height_in_cm": {
+                "gte": 135
+              }
+            }
+          },
+          {
+            "range": {
+              "compatibility_score": {
+                "gte": 0.09,
+                "lte": 0.4
+              }
+            }
+          },
+          {
+            "term": {
+              "favourite": false
+            }
+          },
+          {
+            "range": {
+              "contacts_exchanged": {
+                "gte": 1
+              }
+            }
+          },
+          {
+            "exists": {
+              "field": "main_photo"
+            }
+          },
+          {
+            "geo_distance": {
+              "distance": "300km",
+              "city.location": {
+                "lat": 51.509865,
+                "lon": -0.118092
+              }
+            }
+          }
+        ],
+        "must_not": [],
+        "should": []
+      }
+    },
+    "from": 0,
+    "size": 25,
+    "sort": [],
+    "aggs": {}
+  }
+}, {
+  "input": {
+    "age": {
+      "gte": 63,
+      "lte": 85
+    },
+    "height": {
+      "gte": 164,
+      "lte": 188
+    },
+    "maxDistance": {
+      "lte": 163
+    },
+    "hasPhoto": true,
+    "inContact": false,
+    "isFavourite": true,
+    "compatibilityScore": {
+      "gte": 0.09,
+      "lte": 0.4
+    }
+  },
+  "output": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "age": {
+                "gte": 63,
+                "lte": 85
+              }
+            }
+          },
+          {
+            "range": {
+              "height_in_cm": {
+                "gte": 164,
+                "lte": 188
+              }
+            }
+          },
+          {
+            "range": {
+              "compatibility_score": {
+                "gte": 0.09,
+                "lte": 0.4
+              }
+            }
+          },
+          {
+            "term": {
+              "favourite": true
+            }
+          },
+          {
+            "range": {
+              "contacts_exchanged": {
+                "lte": 1
+              }
+            }
+          },
+          {
+            "exists": {
+              "field": "main_photo"
+            }
+          },
+          {
+            "geo_distance": {
+              "distance": "163km",
+              "city.location": {
+                "lat": 51.509865,
+                "lon": -0.118092
+              }
+            }
+          }
+        ],
+        "must_not": [],
+        "should": []
+      }
+    },
+    "from": 0,
+    "size": 25,
+    "sort": [],
+    "aggs": {}
+  }
+}, {
+  "input": {
+    "age": {
+      "gte": 36,
+      "lte": 85
+    },
+    "height": {
+      "gte": 139,
+      "lte": 188
+    },
+    "maxDistance": {
+      "lte": 30
+    },
+    "hasPhoto": false,
+    "inContact": false,
+    "isFavourite": true,
+    "compatibilityScore": {
+      "gte": 0.23,
+      "lte": 0.37
+    }
+  },
+  "output": {
+    "query": {
+      "bool": {
+        "must": [
+          {
+            "range": {
+              "age": {
+                "gte": 36,
+                "lte": 85
+              }
+            }
+          },
+          {
+            "range": {
+              "height_in_cm": {
+                "gte": 139,
+                "lte": 188
+              }
+            }
+          },
+          {
+            "range": {
+              "compatibility_score": {
+                "gte": 0.23,
+                "lte": 0.37
+              }
+            }
+          },
+          {
+            "term": {
+              "favourite": true
+            }
+          },
+          {
+            "range": {
+              "contacts_exchanged": {
+                "lte": 1
+              }
+            }
+          },
+          {
+            "geo_distance": {
+              "distance": "30km",
+              "city.location": {
+                "lat": 51.509865,
+                "lon": -0.118092
+              }
+            }
+          }
+        ],
+        "must_not": [
+          {
+            "exists": {
+              "field": "main_photo"
+            }
+          }
+        ],
+        "should": []
+      }
+    },
+    "from": 0,
+    "size": 25,
+    "sort": [],
+    "aggs": {}
+  }
+}]

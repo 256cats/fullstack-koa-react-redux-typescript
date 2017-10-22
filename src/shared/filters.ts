@@ -1,4 +1,18 @@
-import { IFilters } from './filters.d'
+export interface IRange {
+  gte?: number;
+  lte?: number;
+}
+
+export interface IFilters {
+  age: IRange;
+  height: IRange;
+  maxDistance?: IRange;
+  hasPhoto: boolean;
+  compatibilityScore: IRange;
+  inContact: boolean;
+  isFavourite: boolean;
+}
+
 import {
   MIN_AGE,
   MAX_AGE,

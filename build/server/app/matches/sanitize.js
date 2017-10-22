@@ -51,5 +51,6 @@ function sanitizeRequestBody(body) {
     });
     return result;
 }
+exports.sanitizeRequestBody = sanitizeRequestBody;
 exports.default = sanitizeRequestBody;
 //# sourceMappingURL=sanitize.js.map

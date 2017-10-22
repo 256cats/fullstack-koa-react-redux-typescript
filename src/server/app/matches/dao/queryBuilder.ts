@@ -1,10 +1,5 @@
-import { client, getResults } from '../../lib/elastic'
-import { IMatch, IRange, IFilters } from '../../../shared'
-import config from '../../common/config'
-import { RESULTS_PER_PAGE } from '../../common/constants'
-
-const JSON_TAB = 2
-
+import { IMatch, IRange, IFilters } from '../../../../shared'
+import { RESULTS_PER_PAGE } from '../../../common/constants'
 function getRange(name: string, value: IRange) {
   return {
     range: {
@@ -49,7 +44,7 @@ function getDistance(maxDistance: number) {
   }
 }
 
-function queryBodyBuilder(params: IFilters) {
+export function queryBodyBuilder(params: IFilters) {
   const body = {
     query: {
       bool: {
@@ -84,15 +79,4 @@ function queryBodyBuilder(params: IFilters) {
   }
 
   return body
-}
-
-export async function findMatches(params: IFilters): Promise<Array<IMatch>> {
-  // todo - error handling, pagination
-  console.log('body', JSON.stringify(queryBodyBuilder(params), null, JSON_TAB))
-  const response = await client.search({
-    index: config.elastic.index.matches,
-    type: config.elastic.index.matches,
-    body: queryBodyBuilder(params)
-  })
-  return getResults(response)
 }

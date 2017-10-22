@@ -2,18 +2,19 @@
   "name": "fullstack-koa-react-redux-typescript",
   "version": "1.0.0",
   "main": "build/server/index.js",
-  "license": "CC0-1.0",
+  "license": "MIT",
   "scripts": {
     "build-client-prod": "webpack -p --config=config/webpack/prod.js",
-    "build-server-prod": "yarn lint && tsc -p tsconfig-server-prod.json",
+    "build-server-prod": "yarn test-no-watch && yarn lint && tsc -p tsconfig-server-prod.json",
     "build-prod": "rm -rf ./build/server && yarn build-server-prod && yarn build-client-prod",
     "start-prod": "node utils/load.js && NODE_ENV=production node build/server/server.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --watch 'src/server/**/*' -e ts,tsx --exec 'ts-node' src/server/server.ts",
     "lint": "yarn lint:ts && yarn lint:sass",
-    "lint:ts": "tslint './src/**/*.ts*' --format stylish --force",
+    "lint:ts": "tslint  --project . --exclude '*.test.*' --format stylish --force",
     "lint:sass": "stylelint ./src/**/*.scss",
     "lint:ts-fix": "tslint --project . --fix",
-    "test": "jest --watchAll --coverage"
+    "test": "jest --watchAll --coverage",
+    "test-no-watch": "jest"
   },
   "devDependencies": {
     "@types/classnames": "2.2.3",
@@ -85,6 +86,7 @@
     "extract-text-webpack-plugin": "^3.0.1",
     "koa": "2.3.0",
     "koa-bodyparser": "^4.2.0",
+    "koa-logger": "^3.1.0",
     "koa-router": "7.2.1",
     "koa-static": "^4.0.1",
     "lodash": "^4.17.4",
@@ -98,6 +100,7 @@
     "rheostat": "^2.1.1"
   },
   "jest": {
+    "verbose": false,
     "moduleFileExtensions": [
       "ts",
       "tsx",
@@ -105,7 +108,7 @@
       "jsx"
     ],
     "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/configs/jest/jest.preprocessor.js"
+      "^.+\\.(ts|tsx)$": "<rootDir>/config/jest/jest.preprocessor.js"
     },
     "transformIgnorePatterns": [
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
@@ -116,7 +119,7 @@
     ],
     "moduleNameMapper": {
       "^.+\\.(css|scss)$": "identity-obj-proxy",
-      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/configs/jest/fileMock.js"
+      "^.+\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/jest/fileMock.js"
     },
     "globals": {
       "DEVELOPMENT": false,

@@ -10,7 +10,7 @@ import { debounce, curry } from 'lodash'
 
 const DEBOUNCE_TIMEOUT = 500
 
-const doRequest = debounce(async (dispatch, data) => {
+const doRequest = debounce(async (dispatch, data) => { // todo cancel previous request on new one
   const url = Routes.POST_MATCHES
   try {
     const response = await post(url, data)

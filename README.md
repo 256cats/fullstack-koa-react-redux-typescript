@@ -11,12 +11,12 @@ Features:
  * Webpack Hot Module Replacement works out of the box
  * Watch mode - server auto-restarts on code changes
  * Production version build in the `build` folder
- * Dockerized version with ElasticSearch [In progress]
+ * Dockerized version with ElasticSearch [work in progress]
 
 ## How to run - dev mode
 
 ```
-docker-compose up
+docker-compose up [wait for docker to start elasticsearch]
 yarn
 yarn start-dev
 ```
@@ -27,4 +27,9 @@ yarn start-dev
 docker-compose up [wait for docker to start elasticsearch]
 yarn build-prod
 yarn start-prod
+```
+## Test
+
+```
+yarn test-no-watch
 ```

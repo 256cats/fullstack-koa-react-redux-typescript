@@ -2,6 +2,9 @@
   "defaultSeverity": "error",
   "extends": [],
   "jsRules": {},
+  "linterOptions": {
+    "exclude": ["**/__tests__/*"]
+  },
   "rules": {
     "adjacent-overload-signatures": true,
     "ban-types": [

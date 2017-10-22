@@ -42,35 +42,12 @@ var sanitize_1 = require("./sanitize");
 var shared_1 = require("../../../shared");
 var transform_1 = require("./transform");
 var router = new Router();
-router.get(shared_1.Routes.POST_MATCHES, function (ctx) { return __awaiter(_this, void 0, void 0, function () {
-    var payload, _a;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                payload = {
-                    age: { gte: 18, lte: 50 },
-                    height: { gte: 140, lte: 200 },
-                    maxDistance: 100,
-                    hasPhoto: true,
-                    compatibilityScore: { gte: 0, lte: 0.99 },
-                    contactsExchanged: true,
-                    isFavourite: true
-                };
-                _a = ctx;
-                return [4 /*yield*/, dao_1.findMatches(sanitize_1.default(payload))];
-            case 1:
-                _a.body = _b.sent();
-                return [2 /*return*/];
-        }
-    });
-}); });
 router.post(shared_1.Routes.POST_MATCHES, function (ctx) { return __awaiter(_this, void 0, void 0, function () {
     var body, result;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 body = ctx.request.body;
-                console.log('filter', ctx.request);
                 return [4 /*yield*/, dao_1.findMatches(transform_1.transformRequestBody(sanitize_1.default(body)))];
             case 1:
                 result = _a.sent();

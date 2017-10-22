@@ -8,11 +8,12 @@ var __assign = (this && this.__assign) || Object.assign || function(t) {
     return t;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var PERCENT_QUOTIENT = 100;
 function toPercent(num) {
-    return Math.floor(num * 100);
+    return Math.floor(num * PERCENT_QUOTIENT);
 }
 function fromPercent(num) {
-    return num / 100;
+    return num / PERCENT_QUOTIENT;
 }
 function toPercentRange(range) {
     return {
