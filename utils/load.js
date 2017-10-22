@@ -9,7 +9,8 @@ const indexName = 'matches';
 
 function deleteIndex() {
   return client.indices.delete({
-    index: indexName
+    index: indexName,
+    ignore: [404]
   });
 }
 
