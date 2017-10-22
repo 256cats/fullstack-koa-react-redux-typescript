@@ -19,7 +19,7 @@ export namespace App {
 }
 
 // Note: for the sake of simplicity App is the only container connected to Redux.
-// In real app Filter and SearchResults would likely be containers with their own 
+// In real app Filter and SearchResults would likely be containers with their own
 // actions and reducers
 
 @connect(mapStateToProps, mapDispatchToProps)

@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var Router = require("koa-router");
-var constants_1 = require("./constants");
+var constants_1 = require("./common/constants");
 var router = new Router();
 router.get('/test2', function (ctx) { return __awaiter(_this, void 0, void 0, function () {
     return __generator(this, function (_a) {

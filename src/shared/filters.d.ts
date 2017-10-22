@@ -1,5 +1,5 @@
 export interface IRange {
-  gte?: number; 
+  gte?: number;
   lte?: number;
 }
 

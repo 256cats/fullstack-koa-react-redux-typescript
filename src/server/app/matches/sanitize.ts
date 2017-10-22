@@ -37,9 +37,9 @@ export default function sanitizeRequestBody(body: any): IFilters {
     openRight: true
   })
 
-  result.hasPhoto = !!get(body,'hasPhoto', HAS_PHOTO_DEFAULT)
-  result.inContact = !!get(body,'inContact', IN_CONTACT_DEFAULT)
-  result.isFavourite = !!get(body,'isFavourite', IS_FAVOURITE_DEFAULT)
+  result.hasPhoto = !!get(body, 'hasPhoto', HAS_PHOTO_DEFAULT)
+  result.inContact = !!get(body, 'inContact', IN_CONTACT_DEFAULT)
+  result.isFavourite = !!get(body, 'isFavourite', IS_FAVOURITE_DEFAULT)
 
   result.compatibilityScore = sanitizeRange({
     gte: get(body, 'compatibilityScore.gte', undefined),

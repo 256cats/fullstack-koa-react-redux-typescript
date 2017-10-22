@@ -10,9 +10,9 @@ interface ICheckboxComponentProps {
 const CheckboxWrapper = (props: ComponentProps & { name: string, label: string } ) => {
   const { filters, onFilterChange, name, label } = props
 
-  const onToggle = () => 
+  const onToggle = () =>
     onFilterChange({ ...filters, [name]: !filters[name] })
-  
+
   return <div className="filters__filter">
     <Checkbox
       isChecked={ filters[name] }

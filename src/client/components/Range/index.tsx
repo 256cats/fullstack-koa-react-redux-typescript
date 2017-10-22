@@ -38,7 +38,7 @@ export default class Range extends React.Component<ComponentProps, any> {
   public render() {
     const { selected, min, max } = this.props
     const { onChange } = this
-    
+
     return <div className="rangeSlider">
       <Rheostat
         min={ min }

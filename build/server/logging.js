@@ -35,10 +35,10 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var config_1 = require("./config");
-var constants_1 = require("./constants");
+var config_1 = require("./common/config");
+var constants_1 = require("./common/constants");
 function outputLog(data, thrownError) {
-    if (config_1.config.prettyLog) {
+    if (config_1.default.prettyLog) {
         console.log(data.statusCode + " " + data.method + " " + data.url + " - " + data.responseTime + "ms");
         if (thrownError) {
             console.error(thrownError);

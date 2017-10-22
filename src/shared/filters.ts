@@ -15,11 +15,11 @@ import {
 } from './constants'
 
 export const defaultFilters: IFilters = {
-  age: { 
+  age: {
     gte: MIN_AGE
   },
   height: {
-    gte: MIN_HEIGHT,
+    gte: MIN_HEIGHT
   },
   maxDistance: {
     lte: MAX_DISTANCE_DEFAULT

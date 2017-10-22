@@ -10,8 +10,8 @@ enum ESliderOpen {
   right = 'right'
 }
 
-const RangeWrapper = (props: ComponentProps & { 
-  name: string, 
+const RangeWrapper = (props: ComponentProps & {
+  name: string,
   label: string,
   min: number;
   max: number;
@@ -23,11 +23,11 @@ const RangeWrapper = (props: ComponentProps & {
   unit?: string;
 } ) => {
   const {
-    filters, 
-    onFilterChange, 
-    name, 
-    label, 
-    min, 
+    filters,
+    onFilterChange,
+    name,
+    label,
+    min,
     max,
     selected,
     placeholder,
@@ -35,12 +35,12 @@ const RangeWrapper = (props: ComponentProps & {
   } = props
 
   const options = range(min, max + 1)
-  
-  if(placeholder.gte) {
+
+  if (placeholder.gte) {
     options.unshift(ESliderOpen.left)
   }
 
-  if(placeholder.lte) {
+  if (placeholder.lte) {
     options.push(ESliderOpen.right)
   }
 
@@ -71,7 +71,7 @@ const RangeWrapper = (props: ComponentProps & {
       : options[value.lte]
   })
 
-  const onChange = (value: IRange) => 
+  const onChange = (value: IRange) =>
     onFilterChange({ ...filters, [name]: indexToPropsValue(value) })
 
   return <div className="filters__filter">

@@ -3,6 +3,8 @@ import { IMatch, IRange, IFilters } from '../../../shared'
 import config from '../../common/config'
 import { RESULTS_PER_PAGE } from '../../common/constants'
 
+const JSON_TAB = 2
+
 function getRange(name: string, value: IRange) {
   return {
     range: {
@@ -21,16 +23,16 @@ function getValue(name: string, value: any) {
 
 function getExists(name: string) {
   return {
-    exists: { 
-      field: name 
+    exists: {
+      field: name
     }
   }
 }
 
 function getMissing(name: string) {
   return {
-    missing: { 
-      field: name 
+    missing: {
+      field: name
     }
   }
 }
@@ -46,7 +48,6 @@ function getDistance(maxDistance: number) {
     }
   }
 }
-
 
 function queryBodyBuilder(params: IFilters) {
   const body = {
@@ -72,13 +73,13 @@ function queryBodyBuilder(params: IFilters) {
     aggs: {}
   }
 
-  if(params.hasPhoto) {
+  if (params.hasPhoto) {
     body.query.bool.must.push(getExists('main_photo'))
-  } else { 
+  } else {
     body.query.bool.must_not.push(getExists('main_photo'))
   }
 
-  if(params.maxDistance.lte) {
+  if (params.maxDistance.lte) {
     body.query.bool.must.push(getDistance(params.maxDistance.lte))
   }
 
@@ -87,7 +88,7 @@ function queryBodyBuilder(params: IFilters) {
 
 export async function findMatches(params: IFilters): Promise<Array<IMatch>> {
   // todo - error handling, pagination
-  console.log('body', JSON.stringify(queryBodyBuilder(params), null, 2))
+  console.log('body', JSON.stringify(queryBodyBuilder(params), null, JSON_TAB))
   const response = await client.search({
     index: config.elastic.index.matches,
     type: config.elastic.index.matches,

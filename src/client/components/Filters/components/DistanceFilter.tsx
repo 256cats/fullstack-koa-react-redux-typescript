@@ -15,24 +15,24 @@ const FAKE_MAX_DISTANCE = 10000
 const DistanceFilter = (props: ComponentProps) => {
 
   const {
-    filters, 
+    filters,
     onFilterChange
   } = props
 
   const options = range(MIN_DISTANCE, MAX_DISTANCE + 1)
-    .map((i: number) => ({ value: i, label: `${i}` }));
+    .map((i: number) => ({ value: i, label: `${i}` }))
 
-  options.unshift({ 
+  options.unshift({
     value: MIN_DISTANCE,
     label: `Less than ${MIN_DISTANCE}`
   })
 
-  options.push({ 
+  options.push({
     value: FAKE_MAX_DISTANCE, // todo: fix hardcode
     label: `Greater than ${MAX_DISTANCE}`
   })
 
-  const onChange = (values: {values: Array<number>}) => 
+  const onChange = (values: {values: Array<number>}) =>
     onFilterChange({ ...filters, maxDistance: { lte: options[values.values[0]].value } })
 
   const { lte } = filters.maxDistance
@@ -60,4 +60,3 @@ const DistanceFilter = (props: ComponentProps) => {
 }
 
 export default DistanceFilter
-

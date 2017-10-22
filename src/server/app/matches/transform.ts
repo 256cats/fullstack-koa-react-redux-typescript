@@ -1,11 +1,13 @@
 import { IFilters, IRange, IMatch } from '../../../shared'
 
+const PERCENT_QUOTIENT = 100
+
 function toPercent(num: number) {
-  return Math.floor(num * 100)
+  return Math.floor(num * PERCENT_QUOTIENT)
 }
 
 function fromPercent(num: number) {
-  return num / 100
+  return num / PERCENT_QUOTIENT
 }
 
 function toPercentRange(range: IRange) {

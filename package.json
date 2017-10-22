@@ -7,7 +7,7 @@
     "build-client-prod": "webpack -p --config=config/webpack/prod.js",
     "build-server-prod": "yarn lint && tsc -p tsconfig-server-prod.json",
     "build-prod": "rm -rf ./build/server && yarn build-server-prod && yarn build-client-prod",
-    "start-prod": "NODE_ENV=production node build/server/server.js",
+    "start-prod": "node utils/load.js && NODE_ENV=production node build/server/server.js",
     "start-dev": "cross-env NODE_ENV=development nodemon --watch 'src/server/**/*' -e ts,tsx --exec 'ts-node' src/server/server.ts",
     "lint": "yarn lint:ts && yarn lint:sass",
     "lint:ts": "tslint './src/**/*.ts*' --format stylish --force",

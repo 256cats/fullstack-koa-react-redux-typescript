@@ -6,15 +6,16 @@ import rootReducer, { RootStore } from '../reducers'
 
 export function configureStore(initialStore?: RootStore) {
   let middleware = applyMiddleware(thunkMiddleware, logger)
-  
+
   if (process.env.NODE_ENV === 'development') {
     middleware = composeWithDevTools(middleware)
   }
-  
-  const store = createStore(rootReducer, initialStore, middleware) as Store<RootStore>;
+
+  const store = createStore(rootReducer, initialStore, middleware) as Store<RootStore>
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {
+      // tslint:disable-next-line
       const nextReducer = require('../reducers')
       store.replaceReducer(nextReducer)
     })

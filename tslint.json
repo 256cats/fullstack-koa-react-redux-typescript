@@ -76,7 +76,6 @@
     "no-inferrable-types": false,
     "no-internal-module": true,
     "no-magic-numbers": true,
-    "no-namespace": true,
     "no-reference": true,
     "no-var-requires": true,
     "no-unused-expression": true,

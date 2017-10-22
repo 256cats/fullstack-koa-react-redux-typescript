@@ -9,7 +9,7 @@ import CheckboxFilters from './components/CheckboxFilters'
 import RangeFilters from './components/RangeFilters'
 import DistanceFilter from './components/DistanceFilter'
 
-// todo - for simplicity all filters are in one root component, 
+// todo - for simplicity all filters are in one root component,
 // later it has to be further separated into different components/containers
 
 export default class Filters extends React.Component<ComponentProps, any> {
@@ -22,7 +22,6 @@ export default class Filters extends React.Component<ComponentProps, any> {
       { CheckboxFilters(props) }
       { RangeFilters(props) }
       { DistanceFilter(props) }
-      
     </div>
   }
 }

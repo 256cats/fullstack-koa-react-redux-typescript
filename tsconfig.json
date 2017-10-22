@@ -23,9 +23,5 @@
     "node_modules",
     "**/*.spec.ts",
     "**/*.test.ts*"
-  ],
-  "files":[
-    "types/*"
   ]
-  
 }

@@ -6,7 +6,7 @@ export interface StateProps {
   matches: Array<IMatch>;
 }
 
-const MatchRow = (props: {label: string, value: string|number}) => 
+const MatchRow = (props: {label: string, value: string|number}) =>
   <div className="searchResults__item__content__row">
     <span className="row__label">{ props.label }:</span>
     <span className="row__value">{ props.value }</span>
@@ -25,9 +25,9 @@ const MatchItem = (props: IMatch) => <div key={ props._id } className="searchRes
     <MatchRow label="Religion" value={ props.religion } />
     <MatchRow label="Compatibility score" value={ `${props.compatibility_score}%`} />
     <MatchRow label="Contacts exchanged" value={ props.contacts_exchanged } />
-    <MatchRow label="Is favourite" value={ props.favourite 
+    <MatchRow label="Is favourite" value={ props.favourite
       ? 'Yes'
-      : 'No' 
+      : 'No'
     } />
   </div>
 </div>
