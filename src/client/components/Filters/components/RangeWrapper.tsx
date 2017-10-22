@@ -55,10 +55,10 @@ const RangeWrapper = (props: ComponentProps & {
 
   const placeholderText = {
     gte: options[selectedIndex.gte] === ESliderOpen.left
-      ? `Less than ${min}${unit || ''}`
+      ? `Less than ${min}`
       : options[selectedIndex.gte],
     lte: options[selectedIndex.lte] === ESliderOpen.right
-      ? `Greater than ${max}${unit || ''}`
+      ? `Greater than ${max}`
       : options[selectedIndex.lte]
   }
 
@@ -74,7 +74,7 @@ const RangeWrapper = (props: ComponentProps & {
   const onChange = (value: IRange) => 
     onFilterChange({ ...filters, [name]: indexToPropsValue(value) })
 
-  return <div>
+  return <div className="filters__filter">
     <span>{ label }</span>
     <Range
       selected={ selectedIndex }
@@ -82,12 +82,12 @@ const RangeWrapper = (props: ComponentProps & {
       max={ options.length - 1 }
       onChange={ onChange }
     />
-    <div>
-      <div>
-        { placeholderText.gte }
+    <div className="filters__placeholder">
+      <div className="filters__placeholder__left">
+        { `${placeholderText.gte}${unit || ''}` }
       </div>
-      <div>
-        { placeholderText.lte }
+      <div className="filters__placeholder__right">
+        { `${placeholderText.lte}${unit || ''}` }
       </div>
     </div>
   </div>

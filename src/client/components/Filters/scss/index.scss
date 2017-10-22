@@ -1,0 +1,43 @@
+.filters {
+  flex: 1 0 auto;
+
+  @media (min-width: 992px) {
+    flex: 1 0 350px;
+    max-width: 350px;
+    margin-right: 10px;
+  }
+}
+
+.filters__header {
+  font-weight: 600;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.filters__filter {
+  margin-bottom: 10px;
+}
+
+.filters__placeholder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .filters__placeholder__left {
+    flex: 1 0 auto;
+    text-align: left;
+  }
+
+  .filters__placeholder__right {
+    flex: 1 0 auto;
+    text-align: right;
+  }
+}
+
+.filters__filter--padding {
+  padding: 10px;
+}
+
+.rangeSlider {
+  padding: 10px;
+}

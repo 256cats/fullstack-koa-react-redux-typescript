@@ -1,9 +1,9 @@
 import * as React from 'react'
-// import '!style-loader!css-loader!sass-loader!./scss/index.scss'
+import '!style-loader!css-loader!sass-loader!./scss/index.scss'
 import '!style-loader!css-loader!react-select/dist/react-select.css'
 import '!style-loader!css-loader!rheostat/css/slider.css'
 import '!style-loader!css-loader!rheostat/css/slider-horizontal.css'
-// import '!style-loader!css-loader!rheostat/css/slider-vertical.css'
+import '!style-loader!css-loader!rheostat/css/slider-vertical.css'
 import ReactSelect from 'react-select'
 import Rheostat from 'rheostat'
 import { IRange } from '../../../shared'
@@ -39,7 +39,7 @@ export default class Range extends React.Component<ComponentProps, any> {
     const { selected, min, max } = this.props
     const { onChange } = this
     
-    return <div>
+    return <div className="rangeSlider">
       <Rheostat
         min={ min }
         max={ max }

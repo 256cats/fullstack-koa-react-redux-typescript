@@ -15,8 +15,8 @@ export type ComponentProps = IStateProps & IDispatchProps
 export default class Checkbox extends React.Component<ComponentProps, any> {
   public render() {
     const { label, isChecked, onToggle } = this.props
-    return <div>
-      <span>{ label }</span>
+    return <div className="checkbox">
+      <div className="checkbox__label">{ label }</div>
       <input
         type="checkbox"
         checked={ isChecked }

@@ -23,18 +23,17 @@ const DistanceFilter = (props: ComponentProps) => {
     .map((i: number) => ({ value: i, label: `${i}` }));
 
   options.unshift({ 
-    value: undefined,
-    label: `Less than ${MIN_DISTANCE}km`
+    value: MIN_DISTANCE,
+    label: `Less than ${MIN_DISTANCE}`
   })
 
   options.push({ 
     value: FAKE_MAX_DISTANCE, // todo: fix hardcode
-    label: `Greater than ${MAX_DISTANCE}km`
+    label: `Greater than ${MAX_DISTANCE}`
   })
 
   const onChange = (values: {values: Array<number>}) => 
     onFilterChange({ ...filters, maxDistance: { lte: options[values.values[0]].value } })
-
 
   const { lte } = filters.maxDistance
 
@@ -42,18 +41,19 @@ const DistanceFilter = (props: ComponentProps) => {
     ? 0
     : options.findIndex(option => option.value === lte)
 
-  return <div>
+  return <div className="filters__filter">
     <span>Max distance</span>
-    
-    <Rheostat
-      min={ 0 }
-      max={ options.length - 1 }
-      onValuesUpdated={ onChange }
-      values={ [selectedIndex] }
-    />
-    <div>
-      <div>
-        { options[selectedIndex].label }
+    <div className="rangeSlider">
+      <Rheostat
+        min={ 0 }
+        max={ options.length - 1 }
+        onValuesUpdated={ onChange }
+        values={ [selectedIndex] }
+      />
+    </div>
+    <div className="filters__placeholder">
+      <div className="filters__placeholder__left">
+        { `${options[selectedIndex].label}km` }
       </div>
     </div>
   </div>

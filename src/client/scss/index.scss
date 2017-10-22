@@ -19,15 +19,3 @@ html {
   -moz-box-sizing: inherit;
   box-sizing: inherit;
 }
-
-.app {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  font-family: 'Roboto', sans-serif;
-
-  @media (min-width: $screen-md-min) {
-    flex-direction: row;
-  }
-}

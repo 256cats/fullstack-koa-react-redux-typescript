@@ -13,11 +13,13 @@ const CheckboxWrapper = (props: ComponentProps & { name: string, label: string }
   const onToggle = () => 
     onFilterChange({ ...filters, [name]: !filters[name] })
   
-  return <Checkbox
-    isChecked={ filters[name] }
-    label={ label }
-    onToggle={ onToggle }
-  />
+  return <div className="filters__filter">
+    <Checkbox
+      isChecked={ filters[name] }
+      label={ label }
+      onToggle={ onToggle }
+    />
+  </div>
 }
 
 export default CheckboxWrapper
