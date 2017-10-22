@@ -10,5 +10,5 @@ export const client = new elasticSearch.Client({
 export function getResults(esResponse: any) {
   return get(esResponse, 'hits.hits', [])
     .filter(item => typeof item._source !== 'undefined')
-    .map(item => item._source)
+    .map(item => ({ _id: item._id, ...item._source}))
 }

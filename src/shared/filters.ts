@@ -28,6 +28,7 @@ export const defaultFilters: IFilters = {
   inContact: false,
   isFavourite: false,
   compatibilityScore: {
-    gte: MIN_COMPATIBILITY_SCORE
+    gte: MIN_COMPATIBILITY_SCORE,
+    lte: MAX_COMPATIBILITY_SCORE
   }
 }

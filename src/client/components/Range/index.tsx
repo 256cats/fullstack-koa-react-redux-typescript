@@ -1,10 +1,10 @@
 import * as React from 'react'
-import '!style-loader!css-loader!sass-loader!./scss/index.scss'
-import 'react-select/dist/react-select.css'
-import * as ReactSelect from 'react-select'
+// import '!style-loader!css-loader!sass-loader!./scss/index.scss'
+import '!style-loader!css-loader!react-select/dist/react-select.css'
+import ReactSelect from 'react-select'
 import { IRange } from '../../../shared'
 
-interface ISelectOption {
+export interface ISelectOption {
   value: number;
   label: string;
 }
@@ -16,6 +16,10 @@ export interface IStateProps {
     gte?: string;
     lte?: string;
   }
+  hidden: {
+    lte?: boolean;
+    gte?: boolean;
+  }
 }
 
 export interface IDispatchProps {
@@ -25,21 +29,22 @@ export interface IDispatchProps {
 export type ComponentProps = IStateProps & IDispatchProps
 
 export default class Range extends React.Component<ComponentProps, any> {
-  private onChangeGte(value: number) {
+  private onChangeGte = (option: ISelectOption) => {
     const { selected, onChange } = this.props
-    onChange({ ...selected, gte: value } as IRange)
+    onChange({ ...selected, gte: option.value } as IRange)
   }
 
-  private onChangeLte(value: number) {
+  private onChangeLte = (option: ISelectOption) => {
     const { selected, onChange } = this.props
-    onChange({ ...selected, lte: value } as IRange)
+    // debugger
+    onChange({ ...selected, lte: option.value } as IRange)
   }
 
   public render() {
-    const { options, selected, placeholder } = this.props
+    const { options, selected, placeholder, hidden } = this.props
     const { onChangeGte, onChangeLte } = this
     return <div>
-      <ReactSelect
+      { !hidden.gte && <ReactSelect
         onChange={ onChangeGte }
         options={ options }
         value={ selected.gte }
@@ -48,17 +53,17 @@ export default class Range extends React.Component<ComponentProps, any> {
           : undefined 
         }
         clearable={ !!placeholder.gte }
-      />
-      <ReactSelect
+      /> }
+      { !hidden.lte && <ReactSelect
         onChange={ onChangeLte }
         options={ options }
-        value={ selected.gte }
+        value={ selected.lte }
         placeholder={ placeholder.lte 
           ? placeholder.lte
           : undefined 
         }
         clearable={ !!placeholder.lte }
-      />
+      /> }
     </div>
   }
 }

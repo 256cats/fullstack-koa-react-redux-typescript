@@ -1,16 +1,22 @@
-// just fyi
-const Schema = {
-  display_name: { type: 'string' },
-  age: { type: 'integer' },
-  job_title: { type: 'string' },
-  height_in_cm: { type: 'integer' },
-  city: {
-    name: { type: 'string' },
-    location: { type: 'geo_point'}
-  },
-  main_photo: { type: 'string' },
-  compatibility_score: { type: 'float' },
-  contacts_exchanged: { type: 'integer' },
-  favourite: { type: 'boolean' },
-  religion: { type: 'string' }
-}
+// import { IMatch } from '../../../shared'
+
+// export interface IMatchSchema {
+//   display_name: string;
+//   age: number;
+//   job_title: string;
+//   height_in_cm: number;
+//   city: {
+//     name: string;
+//     location: { 
+//       lat: number;
+//       lon: number;
+//     }
+//   }
+//   main_photo?: string;
+//   compatibility_score: number;
+//   contacts_exchanged: number;
+//   favourite: boolean;
+//   religion: string;
+// }
+
+// export function ESResultToMatch

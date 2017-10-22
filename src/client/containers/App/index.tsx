@@ -29,7 +29,7 @@ export default class App extends React.Component<App.IProps, any> {
     actions.requestSearch(filters) // initial search request on app load
   }
 
-  private onFilterChange(filters: IFilters) {
+  private onFilterChange = (filters: IFilters) => {
     const { actions } = this.props
     actions.filterChange(filters)
     actions.requestSearch(filters)

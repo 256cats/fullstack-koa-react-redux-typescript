@@ -15,8 +15,8 @@ function render() {
   const App = require('./containers/App').default
   ReactDOM.render(
     <AppContainer>
-      <Provider store={store}>
-        <Router history={history}>
+      <Provider store={ store} >
+        <Router history={ history }>
           <Switch>
             <Route path="/" component={ App } />
           </Switch>

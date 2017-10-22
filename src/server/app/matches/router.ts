@@ -5,6 +5,7 @@ import { findMatches } from './dao'
 import sanitize from './sanitize'
 import { IFilters } from '../../../shared'
 import { Routes } from '../../../shared'
+import { transformRequestBody, transformResponsePayload } from './transform'
 const router = new Router()
 
 interface IMatchesRequestContext extends Router.IRouterContext {
@@ -29,7 +30,14 @@ router.get(Routes.POST_MATCHES, async ctx => {
 })
 
 router.post(Routes.POST_MATCHES, async (ctx: IMatchesRequestContext) => {
-  ctx.body = await findMatches(sanitize(ctx.request.body))
+  const { body } = ctx.request
+  console.log('filter', ctx.request)
+  const result = await findMatches(
+    transformRequestBody(
+      sanitize(body)
+    )
+  )
+  ctx.body = transformResponsePayload(result)
 })
 
 export default router.routes()

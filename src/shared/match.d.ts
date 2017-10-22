@@ -1,4 +1,5 @@
 export interface IMatch {
+  _id: string;
   display_name: string;
   age: number;
   job_title: string;

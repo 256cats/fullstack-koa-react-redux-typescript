@@ -27,6 +27,14 @@ function getExists(name: string) {
   }
 }
 
+function getMissing(name: string) {
+  return {
+    missing: { 
+      field: name 
+    }
+  }
+}
+
 function getDistance(maxDistance: number) {
   return {
     geo_distance : {
@@ -38,6 +46,7 @@ function getDistance(maxDistance: number) {
     }
   }
 }
+
 
 function queryBodyBuilder(params: IFilters) {
   const body = {
@@ -65,6 +74,8 @@ function queryBodyBuilder(params: IFilters) {
 
   if(params.hasPhoto) {
     body.query.bool.must.push(getExists('main_photo'))
+  } else { 
+    body.query.bool.must_not.push(getExists('main_photo'))
   }
 
   if(params.maxDistance.lte) {
@@ -82,6 +93,5 @@ export async function findMatches(params: IFilters): Promise<Array<IMatch>> {
     type: config.elastic.index.matches,
     body: queryBodyBuilder(params)
   })
-
-  return getResults(response) as Array<IMatch>
+  return getResults(response)
 }
