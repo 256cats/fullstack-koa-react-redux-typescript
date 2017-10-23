@@ -1,24 +1,4 @@
-// bootstrap responsive breakpoints
-$screen-sm-min: 768px;
-$screen-xs-max: ($screen-sm-min - 1);
-$screen-md-min: 992px;
-$screen-sm-max: ($screen-md-min - 1);
-$screen-lg-min: 1200px;
-$screen-md-max: ($screen-lg-min - 1);
-
-html {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  -webkit-box-sizing: inherit;
-  -moz-box-sizing: inherit;
-  box-sizing: inherit;
-}
+@import '../../../scss/index.scss';
 
 .app {
   padding: 20px;

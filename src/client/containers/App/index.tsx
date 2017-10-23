@@ -22,8 +22,8 @@ export namespace App {
 // In real app Filter and SearchResults would likely be containers with their own
 // actions and reducers
 
-@connect(mapStateToProps, mapDispatchToProps)
-export default class App extends React.Component<App.IProps, any> {
+// @connect(mapStateToProps, mapDispatchToProps)
+class App extends React.Component<App.IProps, any> {
   public componentDidMount() {
     const { actions, filters } = this.props
     actions.requestSearch(filters) // initial search request on app load
@@ -62,3 +62,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators<any>(Actions as any, dispatch) as typeof Actions
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
