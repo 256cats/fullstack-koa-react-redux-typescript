@@ -1,7 +1,8 @@
 const elastic = require('elasticsearch');
 const data = require('./initialData.json');
+
 const client = new elastic.Client({
-  host: 'localhost:9200',
+  host: '10.5.0.6:9200',
   log: 'trace'
 });
 
@@ -62,13 +63,28 @@ function bulkAdd(documents) {
 }
 
 console.log('started');
-deleteIndex()
-  .then(initIndex, function () {})
-  .then(initMapping)
-  .then(function () {
-    return bulkAdd(data.matches);
-  })
-  .then(function () {
-    console.log('done, added', data.matches.length);
-    process.exit();
-  })
+
+async function delay(timeout) {
+  return new Promise(resolve => setTimeout(() => resolve(), timeout))
+}
+
+async function main() {
+  let connected = false;
+  while(!connected) {
+    try {
+      await deleteIndex();
+      connected = true;
+    } catch (e) {
+      console.log('error', e);
+      await delay(2000)
+    }
+  }
+
+  await initIndex
+  await initMapping
+  await bulkAdd(data.matches)
+  console.log('done, added', data.matches.length);
+  process.exit();
+}
+
+main();
