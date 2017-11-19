@@ -13,7 +13,7 @@ var config = {
         public: path.join(path.resolve(__dirname, '..', '..', 'public'))
     },
     elastic: {
-        host: 'localhost:9200',
+        host: '10.5.0.6:9200',
         index: {
             matches: 'matches'
         }
